@@ -1,0 +1,10 @@
+.board {
+  background: url("../../assets/board.png") fixed;
+  background-size: 453px 450px;
+  margin: auto;
+  width: 50%;
+}
+
+.row {
+  display: flex;
+}
