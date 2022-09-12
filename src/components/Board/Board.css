@@ -1,5 +1,5 @@
 .board {
-  background: url("../../assets/board.png") fixed;
+  background: url("../../assets/board.png") no-repeat;
   background-size: 453px 450px;
   margin: auto;
   width: 50%;
