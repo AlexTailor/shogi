@@ -1,5 +1,5 @@
-import Piece from "./piece";
-import icon from "../assets/silver.png";
+import Piece from "./Piece";
+import icon from "../../assets/silver.png";
 
 export default class Silver extends Piece {
   constructor(player) {
