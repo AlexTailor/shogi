@@ -2,29 +2,29 @@ import React from "react";
 import { useState, useEffect } from "react";
 import "./Board.css";
 import Tile from "../Tile/Tile";
+import BoardModel from "../../models/Board";
 
 export default function Board() {
-  const [board, setBoard] = useState([]);
+  const [board, setBoard] = useState({});
 
   useEffect(() => {
-    createBoard();
+    const startBoard = new BoardModel();
+    startBoard.initBoard();
+    startBoard.initPieces();
+    setBoard(startBoard);
+    // eslint-disable-next-line
   }, []);
 
-  function createBoard() {
-    const rows = [];
-    for (let i = 0; i < 9; i++) {
-      const row = [];
-      for (let j = 0; j < 9; j++) {
-        row.push(<Tile key={j} />);
-      }
-      rows.push(
-        <div key={i} className="row">
-          {row}
-        </div>
-      );
-    }
-    setBoard(rows);
-  }
-
-  return <div className="board">{board}</div>;
+  return (
+    <div className="board">
+      {board.rows &&
+        board.rows.map((row, i) => (
+          <div key={"row" + i} className="row">
+            {row.map((tile, i) => (
+              <Tile key={i} tile={tile} piece={tile.piece} />
+            ))}
+          </div>
+        ))}
+    </div>
+  );
 }

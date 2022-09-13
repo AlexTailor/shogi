@@ -8,7 +8,7 @@ import Silver from "./pieces/Silver";
 import Gold from "./pieces/Gold";
 import King from "./pieces/King";
 export default class Board {
-  tiles = [];
+  rows = [];
 
   initBoard() {
     for (let y = 0; y < 9; y++) {
@@ -16,7 +16,7 @@ export default class Board {
       for (let x = 0; x < 9; x++) {
         row.push(new Tile(x, y));
       }
-      this.tiles.push(row);
+      this.rows.push(row);
     }
   }
 
@@ -27,33 +27,33 @@ export default class Board {
   }
 
   getTile(x, y) {
-    return this.tiles[y][x];
+    return this.rows[y][x];
   }
 
   setupFrontRows() {
     for (let i = 0; i < 9; i++) {
-      this.tiles[2][i].setPiece(new Pawn(2, this.getTile(i, 2)));
-      this.tiles[6][i].setPiece(new Pawn(1, this.getTile(i, 6)));
+      this.rows[2][i].setPiece(new Pawn(2, this.getTile(i, 2)));
+      this.rows[6][i].setPiece(new Pawn(1, this.getTile(i, 6)));
     }
   }
 
   setupMiddleRows() {
-    this.tiles[1][1].setPiece(new Rook(2, this.getTile(1, 1)));
-    this.tiles[1][7].setPiece(new Bishop(2, this.getTile(7, 1)));
+    this.rows[1][1].setPiece(new Rook(2, this.getTile(1, 1)));
+    this.rows[1][7].setPiece(new Bishop(2, this.getTile(7, 1)));
 
-    this.tiles[7][7].setPiece(new Rook(1, this.getTile(7, 7)));
-    this.tiles[7][1].setPiece(new Bishop(1, this.getTile(1, 7)));
+    this.rows[7][7].setPiece(new Rook(1, this.getTile(7, 7)));
+    this.rows[7][1].setPiece(new Bishop(1, this.getTile(1, 7)));
   }
 
   setupBackRows() {
     let backrow = ["L", "N", "S", "G", "K", "G", "S", "N", "L"];
 
     backrow.forEach((id, i) => {
-      this.tiles[0][i].setPiece(this.getPieceById(2, id, 0, i));
+      this.rows[0][i].setPiece(this.getPieceById(2, id, 0, i));
     });
 
     backrow.forEach((id, i) => {
-      this.tiles[8][i].setPiece(this.getPieceById(2, id, 8, i));
+      this.rows[8][i].setPiece(this.getPieceById(1, id, 8, i));
     });
   }
 
