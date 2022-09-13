@@ -4,4 +4,9 @@ export default class Tile {
     this.y = y;
     this.piece = piece;
   }
+
+  setPiece(piece) {
+    this.piece = piece;
+    this.piece.tile = this;
+  }
 }

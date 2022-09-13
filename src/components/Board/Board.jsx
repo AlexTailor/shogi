@@ -14,10 +14,14 @@ export default function Board() {
     const rows = [];
     for (let i = 0; i < 9; i++) {
       const row = [];
-      for (let i = 0; i < 9; i++) {
-        row.push(<Tile />);
+      for (let j = 0; j < 9; j++) {
+        row.push(<Tile key={j} />);
       }
-      rows.push(<div className="row">{row}</div>);
+      rows.push(
+        <div key={i} className="row">
+          {row}
+        </div>
+      );
     }
     setBoard(rows);
   }
