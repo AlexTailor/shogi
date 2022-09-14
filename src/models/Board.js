@@ -26,6 +26,12 @@ export default class Board {
     this.setupBackRows();
   }
 
+  getBoardCopy() {
+    const newBoard = new Board();
+    newBoard.rows = this.rows;
+    return newBoard;
+  }
+
   getTile(x, y) {
     return this.rows[y][x];
   }

@@ -5,6 +5,17 @@ export default class Tile {
     this.piece = piece;
   }
 
+  isEmpty() {
+    return this.piece === null;
+  }
+
+  movePiece(target) {
+    if (target.isEmpty()) {
+      target.setPiece(this.piece);
+      this.piece = null;
+    }
+  }
+
   setPiece(piece) {
     this.piece = piece;
     this.piece.tile = this;

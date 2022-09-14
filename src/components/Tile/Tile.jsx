@@ -5,11 +5,16 @@ export default function Tile(props) {
   return (
     <div
       className="tile"
-      style={{
-        transform: `${props.piece?.player === 2 ? "rotate(180deg)" : ""}`,
-        background: `url(${props.piece?.skin}) no-repeat`,
-        backgroundSize: "48px 48px",
-      }}
-    ></div>
+      onClick={() => props.handleMove(props.tile)}
+      onMouseOver={() => props.getActualTile(props.tile)}
+    >
+      {props.piece?.skin && (
+        <img
+          src={props.piece.skin}
+          className={`piece ${props.piece?.player === 2 && "rotate"}`}
+          alt={props.piece.skin}
+        />
+      )}
+    </div>
   );
 }
