@@ -1,13 +1,13 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "./Board.css";
 import Tile from "../Tile/Tile";
 import BoardModel from "../../models/Board";
+import { PlayerContext } from "../../context/PlayerProvider";
 
 export default function Board() {
+  const [player, setPlayer] = useContext(PlayerContext);
   const [board, setBoard] = useState({});
   const [selectedTile, setSelectedTile] = useState({});
-  const [selectedPlayer, setSelectedPlayer] = useState(1);
 
   useEffect(() => {
     const startBoard = new BoardModel();
@@ -18,10 +18,9 @@ export default function Board() {
   }, []);
 
   function handleMove(tile) {
-    console.log(selectedPlayer);
     if (selectedTile !== tile) {
-      selectedTile.movePiece(tile, selectedPlayer);
-      setSelectedPlayer(selectedPlayer === 1 ? 2 : 1);
+      selectedTile.movePiece(tile, player);
+      setPlayer(player === 1 ? 2 : 1);
       updateBoard();
     }
   }
@@ -41,19 +40,17 @@ export default function Board() {
   return (
     <div className="board">
       {board.rows &&
-        board.rows.map((row, i) => (
-          <div key={"row" + i} className="row">
-            {row.map((tile, i) => (
-              <Tile
-                key={i}
-                tile={tile}
-                piece={tile.piece}
-                handleMove={handleMove}
-                getActualTile={getActualTile}
-              />
-            ))}
-          </div>
-        ))}
+        board.rows.map((row, i) =>
+          row.map((tile, i) => (
+            <Tile
+              key={i}
+              tile={tile}
+              piece={tile.piece}
+              handleMove={handleMove}
+              getActualTile={getActualTile}
+            />
+          ))
+        )}
     </div>
   );
 }

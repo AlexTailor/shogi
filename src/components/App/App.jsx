@@ -1,10 +1,15 @@
-import Board from "../Board/Board";
 import "./App.css";
+import Board from "../Board/Board";
+import Navbar from "../Navbar/Navbar";
+import { PlayerProvider } from "../../context/PlayerProvider";
 
 function App() {
   return (
     <div className="App">
-      <Board />
+      <PlayerProvider>
+        <Navbar />
+        <Board />
+      </PlayerProvider>
     </div>
   );
 }
