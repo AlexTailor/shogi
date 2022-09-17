@@ -38,7 +38,11 @@ export default function Board(props) {
 
   return (
     <div className="board-container">
-      <div className="board">
+      <div
+        className={`board ${
+          (player === 1 && "rotate-full") || (player === 2 && "rotate")
+        }`}
+      >
         {props.board.rows &&
           props.board.rows.map((row, i) =>
             row.map((tile, i) => (

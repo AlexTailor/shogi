@@ -17,7 +17,7 @@ export default function Navbar(props) {
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="navbar-brand">Player {player}</div>
       <button
-        class="btn btn-outline-success my-2 my-sm-0"
+        className="btn btn-outline-success my-2 my-sm-0"
         onClick={() => restartGame()}
       >
         Restart
