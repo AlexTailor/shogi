@@ -38,19 +38,21 @@ export default function Board() {
   }
 
   return (
-    <div className="board">
-      {board.rows &&
-        board.rows.map((row, i) =>
-          row.map((tile, i) => (
-            <Tile
-              key={i}
-              tile={tile}
-              piece={tile.piece}
-              handleMove={handleMove}
-              getActualTile={getActualTile}
-            />
-          ))
-        )}
+    <div className="board-container">
+      <div className="board">
+        {board.rows &&
+          board.rows.map((row, i) =>
+            row.map((tile, i) => (
+              <Tile
+                key={i}
+                tile={tile}
+                piece={tile.piece}
+                handleMove={handleMove}
+                getActualTile={getActualTile}
+              />
+            ))
+          )}
+      </div>
     </div>
   );
 }

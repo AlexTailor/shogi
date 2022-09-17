@@ -1,3 +1,9 @@
+.board-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .board {
   background: url("../../assets/board.png") no-repeat;
   height: 540px;
