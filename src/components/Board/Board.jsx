@@ -4,16 +4,15 @@ import Tile from "../Tile/Tile";
 import BoardModel from "../../models/Board";
 import { PlayerContext } from "../../context/PlayerProvider";
 
-export default function Board() {
+export default function Board(props) {
   const [player, setPlayer] = useContext(PlayerContext);
-  const [board, setBoard] = useState({});
   const [selectedTile, setSelectedTile] = useState({});
 
   useEffect(() => {
     const startBoard = new BoardModel();
     startBoard.initBoard();
     startBoard.initPieces();
-    setBoard(startBoard);
+    props.setBoard(startBoard);
     // eslint-disable-next-line
   }, []);
 
@@ -33,15 +32,15 @@ export default function Board() {
   }
 
   function updateBoard() {
-    const newBoard = board.getBoardCopy();
-    setBoard(newBoard);
+    const newBoard = props.board.getBoardCopy();
+    props.setBoard(newBoard);
   }
 
   return (
     <div className="board-container">
       <div className="board">
-        {board.rows &&
-          board.rows.map((row, i) =>
+        {props.board.rows &&
+          props.board.rows.map((row, i) =>
             row.map((tile, i) => (
               <Tile
                 key={i}
