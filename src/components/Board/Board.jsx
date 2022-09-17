@@ -7,6 +7,7 @@ import BoardModel from "../../models/Board";
 export default function Board() {
   const [board, setBoard] = useState({});
   const [selectedTile, setSelectedTile] = useState({});
+  const [selectedPlayer, setSelectedPlayer] = useState(1);
 
   useEffect(() => {
     const startBoard = new BoardModel();
@@ -17,8 +18,10 @@ export default function Board() {
   }, []);
 
   function handleMove(tile) {
+    console.log(selectedPlayer);
     if (selectedTile !== tile) {
-      selectedTile.movePiece(tile);
+      selectedTile.movePiece(tile, selectedPlayer);
+      setSelectedPlayer(selectedPlayer === 1 ? 2 : 1);
       updateBoard();
     }
   }

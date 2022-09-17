@@ -9,8 +9,8 @@ export default class Tile {
     return this.piece === null;
   }
 
-  movePiece(target) {
-    if (target.isEmpty()) {
+  movePiece(target, player) {
+    if (target.isEmpty() && player === this.piece.player) {
       target.setPiece(this.piece);
       this.piece = null;
     }
