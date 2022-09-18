@@ -1,5 +1,6 @@
 export default class Tile {
-  constructor(x, y, piece = null) {
+  constructor(board, x, y, piece = null) {
+    this.board = board;
     this.x = x;
     this.y = y;
     this.piece = piece;
@@ -7,6 +8,28 @@ export default class Tile {
 
   isEmpty() {
     return this.piece === null;
+  }
+
+  isEmptyHorizontal(target) {
+    if (this.y !== target.y) return false;
+
+    const min = Math.min(this.x, target.x);
+    const max = Math.max(this.x, target.x);
+    for (let x = min + 1; x < max; x++) {
+      if (!this.board.getTile(x, this.y).isEmpty()) return false;
+    }
+    return true;
+  }
+
+  isEmptyVertical(target) {
+    if (this.x !== target.x) return false;
+
+    const min = Math.min(this.y, target.y);
+    const max = Math.max(this.y, target.y);
+    for (let y = min + 1; y < max; y++) {
+      if (!this.board.getTile(this.x, y).isEmpty()) return false;
+    }
+    return true;
   }
 
   movePiece(target, player) {

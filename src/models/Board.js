@@ -14,7 +14,7 @@ export default class Board {
     for (let y = 0; y < 9; y++) {
       const row = [];
       for (let x = 0; x < 9; x++) {
-        row.push(new Tile(x, y));
+        row.push(new Tile(this, x, y));
       }
       this.rows.push(row);
     }
