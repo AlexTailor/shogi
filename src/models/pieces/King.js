@@ -7,13 +7,8 @@ export default class King extends Piece {
   }
 
   canMove(target) {
-    const verticalDistance = this.tile.x - target.x;
-    const horizontalDistance = this.tile.y - target.y;
-
     if (!super.canMove(target)) return false;
-    if (verticalDistance <= 1 && verticalDistance > -2) {
-      if (horizontalDistance <= 1 && horizontalDistance > -2) return true;
-    }
+    if (this.tile.isEmptyAround(target)) return true;
     return false;
   }
 }

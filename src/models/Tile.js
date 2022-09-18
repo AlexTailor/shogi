@@ -32,6 +32,16 @@ export default class Tile {
     return true;
   }
 
+  isEmptyAround(target) {
+    const verticalDistance = this.x - target.x;
+    const horizontalDistance = this.y - target.y;
+
+    if (verticalDistance <= 1 && verticalDistance > -2) {
+      if (horizontalDistance <= 1 && horizontalDistance > -2) return true;
+    }
+    return false;
+  }
+
   movePiece(target, player) {
     if (
       target.isEmpty() &&
