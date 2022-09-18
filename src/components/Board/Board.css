@@ -14,11 +14,11 @@
 }
 
 .rotate {
-  transition: 0.6s ease;
+  transition: 1.5s ease;
   transform: rotate(180deg);
 }
 
 .rotate-full {
-  transition: 0.6s ease;
+  transition: 1.5s ease;
   transform: rotate(360deg);
 }

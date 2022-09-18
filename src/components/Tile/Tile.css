@@ -8,6 +8,11 @@
   font-size: 45px;
 }
 
+.tile:hover {
+  transition: 0.2s ease;
+  opacity: 0.2;
+}
+
 .piece {
   height: 90%;
   width: 90%;
