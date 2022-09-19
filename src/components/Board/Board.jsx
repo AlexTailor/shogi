@@ -25,7 +25,7 @@ export default function Board(props) {
   }
 
   function getActualTile(tile) {
-    if (tile.piece !== null && tile?.piece.player === player) {
+    if (tile.piece !== null) {
       setSelectedTile(tile);
       updateBoard();
     }

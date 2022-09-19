@@ -10,6 +10,13 @@ export default class Tile {
     return this.piece === null;
   }
 
+  isEmptyDiagonal(target) {
+    const absX = Math.abs(this.x - target.x);
+    const absY = Math.abs(this.y - target.y);
+    if (absY !== absX) return false;
+    return true;
+  }
+
   isEmptyHorizontal(target) {
     if (this.y !== target.y) return false;
 
