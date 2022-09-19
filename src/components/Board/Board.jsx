@@ -17,7 +17,11 @@ export default function Board(props) {
   }, []);
 
   function handleMove(tile) {
-    if (selectedTile !== tile && selectedTile.piece?.canMove(tile)) {
+    if (
+      selectedTile !== tile &&
+      selectedTile.piece?.canMove(tile) &&
+      selectedTile.piece?.player === player
+    ) {
       selectedTile.movePiece(tile, player);
       setPlayer(player === 1 ? 2 : 1);
       updateBoard();
