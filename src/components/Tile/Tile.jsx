@@ -4,9 +4,9 @@ import "./Tile.css";
 export default function Tile(props) {
   return (
     <div
-      className="tile"
-      onClick={() => props.handleMove(props.tile)}
-      onMouseOver={() => props.getActualTile(props.tile)}
+      className="tile disable-select"
+      onClick={() => props.getActualTile(props.tile)}
+      onDoubleClick={() => props.handleMove(props.tile)}
     >
       {props.piece?.skin && (
         <img

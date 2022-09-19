@@ -8,6 +8,13 @@
   font-size: 45px;
 }
 
+.disable-select {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
 .tile:hover {
   transition: 0.2s ease;
   opacity: 0.2;
